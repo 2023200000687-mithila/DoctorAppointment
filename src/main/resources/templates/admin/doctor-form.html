@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title th:text="${doctor.id == null ? 'Add Doctor' : 'Edit Doctor'}">Doctor</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><div th:replace="~{fragments/navbar :: navbar}"></div>
+<main class="container narrow"><div class="page-header"><div><span class="eyebrow">Doctor management</span><h1 th:text="${doctor.id == null ? 'Add Doctor' : 'Edit Doctor'}"></h1></div></div>
+<form class="panel form-grid" th:action="${doctor.id == null ? '/doctors/save' : '/doctors/update/' + doctor.id}" method="post" th:object="${doctor}">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+<label>Name<input th:field="*{name}" required><small th:errors="*{name}"></small></label>
+<label>Specialization<input th:field="*{specialization}" required><small th:errors="*{specialization}"></small></label>
+<label>Phone<input th:field="*{phone}" required><small th:errors="*{phone}"></small></label>
+<label>Email<input type="email" th:field="*{email}" required><small th:errors="*{email}"></small></label>
+<label>Available days<input th:field="*{availableDays}" placeholder="Monday, Wednesday, Friday"></label>
+<label>Available time<input th:field="*{availableTime}" placeholder="09:00 AM - 02:00 PM"></label>
+<div class="full-span form-actions"><button class="btn primary" type="submit">Save Doctor</button><a class="btn secondary" th:href="@{/doctors}">Cancel</a></div>
+</form></main><div th:replace="~{fragments/footer :: footer}"></div></body></html>

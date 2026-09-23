@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav class="navbar" th:fragment="navbar">
+    <a class="brand" th:href="@{/}">Medi<span>Care</span></a>
+    <div class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/patient/doctors}" sec:authorize="hasRole('PATIENT')">Doctors</a>
+        <a th:href="@{/patient/appointments}" sec:authorize="hasRole('PATIENT')">My Appointments</a>
+        <a th:href="@{/dashboard}" sec:authorize="hasRole('ADMIN')">Admin Dashboard</a>
+        <a th:href="@{/doctors}" sec:authorize="hasRole('ADMIN')">Doctors</a>
+        <a th:href="@{/patients}" sec:authorize="hasRole('ADMIN')">Patients</a>
+        <a th:href="@{/appointments}" sec:authorize="hasRole('ADMIN')">Appointments</a>
+        <a th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
+        <a th:href="@{/register}" sec:authorize="isAnonymous()">Register</a>
+        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()" class="inline-form">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+            <button class="link-button" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+</body>
+</html>

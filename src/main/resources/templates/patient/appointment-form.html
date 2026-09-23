@@ -1,0 +1,9 @@
+<!DOCTYPE html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Appointment</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><div th:replace="~{fragments/navbar :: navbar}"></div><main class="container narrow"><div class="page-header"><div><span class="eyebrow">Patient portal</span><h1 th:text="${appointment.id == null ? 'Book Appointment' : 'Edit Appointment'}"></h1></div></div><div th:replace="~{fragments/alerts :: alerts}"></div>
+<form class="panel form-grid" th:action="${appointment.id == null ? '/patient/appointments/save' : '/patient/appointments/update/' + appointment.id}" method="post" th:object="${appointment}">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+<label class="full-span">Doctor<select th:field="*{doctorId}" required><option value="">Select a doctor</option><option th:each="d : ${doctors}" th:value="${d.id}" th:text="${d.name + ' — ' + d.specialization}"></option></select><small th:errors="*{doctorId}"></small></label>
+<label>Date<input type="date" th:field="*{appointmentDate}" required><small th:errors="*{appointmentDate}"></small></label>
+<label>Time<input type="time" th:field="*{appointmentTime}" required><small th:errors="*{appointmentTime}"></small></label>
+<label class="full-span">Problem / Reason<textarea th:field="*{problem}" rows="5" required></textarea><small th:errors="*{problem}"></small></label>
+<div class="full-span form-actions"><button class="btn primary">Save Appointment</button><a class="btn secondary" th:href="@{/patient/appointments}">Cancel</a></div></form></main></body></html>

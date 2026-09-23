@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | MediCare</title><link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="auth-page">
+<div class="auth-card wide">
+    <a class="brand center" th:href="@{/}">Medi<span>Care</span></a>
+    <h1>Create patient account</h1>
+    <p class="muted">Register once, then manage your appointments securely.</p>
+    <div class="alert error" th:if="${error}" th:text="${error}"></div>
+    <form method="post" th:action="@{/register}" th:object="${registrationForm}" class="form-grid">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <label>Full name<input th:field="*{name}" required><small th:errors="*{name}"></small></label>
+        <label>Age<input type="number" min="1" th:field="*{age}" required><small th:errors="*{age}"></small></label>
+        <label>Gender
+            <select th:field="*{gender}" required><option value="">Select</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select>
+            <small th:errors="*{gender}"></small>
+        </label>
+        <label>Phone<input th:field="*{phone}" required><small th:errors="*{phone}"></small></label>
+        <label>Email<input type="email" th:field="*{email}" required><small th:errors="*{email}"></small></label>
+        <label>Password<input type="password" th:field="*{password}" required><small th:errors="*{password}"></small></label>
+        <label class="full-span">Address<textarea th:field="*{address}" rows="3"></textarea></label>
+        <button class="btn primary full-span" type="submit">Create Account</button>
+    </form>
+    <p class="auth-bottom">Already registered? <a th:href="@{/login}">Login</a></p>
+</div>
+</body>
+</html>

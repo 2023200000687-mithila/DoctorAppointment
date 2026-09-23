@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Edit Appointment</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><div th:replace="~{fragments/navbar :: navbar}"></div><main class="container narrow"><div class="page-header"><h1>Edit Appointment</h1></div>
+<form class="panel form-grid" method="post" th:action="@{/appointments/update/{id}(id=${appointment.id})}" th:object="${appointment}">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+<label>Doctor<select th:field="*{doctorId}" required><option th:each="d : ${doctors}" th:value="${d.id}" th:text="${d.name + ' — ' + d.specialization}"></option></select></label>
+<label>Patient<select th:field="*{patientId}" required><option th:each="p : ${patients}" th:value="${p.id}" th:text="${p.name + ' — ' + p.email}"></option></select></label>
+<label>Date<input type="date" th:field="*{appointmentDate}" required></label><label>Time<input type="time" th:field="*{appointmentTime}" required></label>
+<label class="full-span">Problem<textarea th:field="*{problem}" required></textarea></label>
+<label>Status<select th:field="*{status}"><option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option></select></label>
+<div class="full-span form-actions"><button class="btn primary">Save Changes</button><a class="btn secondary" th:href="@{/appointments}">Cancel</a></div></form></main></body></html>

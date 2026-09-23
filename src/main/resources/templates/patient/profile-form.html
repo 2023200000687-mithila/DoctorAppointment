@@ -1,0 +1,6 @@
+<!DOCTYPE html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Edit Profile</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><div th:replace="~{fragments/navbar :: navbar}"></div><main class="container narrow"><div class="page-header"><h1>Edit Profile</h1></div>
+<form class="panel form-grid" th:action="@{/patient/profile/update}" method="post" th:object="${patient}">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+<label>Name<input th:field="*{name}" required></label><label>Age<input type="number" th:field="*{age}" min="1" required></label><label>Gender<select th:field="*{gender}" required><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select></label><label>Phone<input th:field="*{phone}" required></label><label>Email<input type="email" th:field="*{email}" required></label><label class="full-span">Address<textarea th:field="*{address}" rows="3"></textarea></label><div class="full-span form-actions"><button class="btn primary">Update Profile</button><a class="btn secondary" th:href="@{/patient/profile}">Cancel</a></div>
+</form></main></body></html>

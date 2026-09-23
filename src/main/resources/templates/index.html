@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare | Doctor Appointment Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<header class="hero">
+    <div class="hero-content">
+        <span class="eyebrow">Trusted digital healthcare</span>
+        <h1>Find the right doctor and book your appointment with ease.</h1>
+        <p>Manage doctors, patients and appointments from one clean healthcare platform.</p>
+        <div class="hero-actions">
+            <a class="btn primary" th:href="@{/register}">Book an Appointment</a>
+            <a class="btn secondary" th:href="@{/login}">Sign In</a>
+        </div>
+    </div>
+    <div class="hero-card">
+        <div class="medical-icon">+</div>
+        <h3>Simple. Secure. Connected.</h3>
+        <p>Patient-friendly appointment management backed by MongoDB Atlas.</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="section-heading">
+        <span class="eyebrow">How it works</span>
+        <h2>Healthcare made simpler</h2>
+    </div>
+    <div class="feature-grid">
+        <article class="feature-card"><span>01</span><h3>Find a doctor</h3><p>Search doctors by name or specialization.</p></article>
+        <article class="feature-card"><span>02</span><h3>Choose a time</h3><p>Select an available date and appointment time.</p></article>
+        <article class="feature-card"><span>03</span><h3>Manage your visit</h3><p>Track, edit or cancel your appointments.</p></article>
+    </div>
+</section>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

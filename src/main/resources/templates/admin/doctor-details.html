@@ -1,0 +1,5 @@
+<!DOCTYPE html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Doctor Details</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><div th:replace="~{fragments/navbar :: navbar}"></div><main class="container narrow">
+<div class="profile-card"><div class="avatar">Dr</div><span class="eyebrow" th:text="${doctor.specialization}"></span><h1 th:text="${doctor.name}"></h1>
+<div class="detail-list"><p><b>Phone:</b> <span th:text="${doctor.phone}"></span></p><p><b>Email:</b> <span th:text="${doctor.email}"></span></p><p><b>Available days:</b> <span th:text="${doctor.availableDays}"></span></p><p><b>Available time:</b> <span th:text="${doctor.availableTime}"></span></p></div>
+<a class="btn primary" th:href="@{/doctors/edit/{id}(id=${doctor.id})}">Edit Doctor</a><a class="btn secondary" th:href="@{/doctors}">Back</a></div></main></body></html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MediCare</title><link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="auth-page">
+<div class="auth-card">
+    <a class="brand center" th:href="@{/}">Medi<span>Care</span></a>
+    <h1>Welcome back</h1>
+    <p class="muted">Sign in to manage your appointments.</p>
+    <div class="alert error" th:if="${param.error}">Invalid email or password.</div>
+    <div class="alert success" th:if="${param.registered}">Registration successful. You can now log in.</div>
+    <div class="alert success" th:if="${param.logout}">You have been logged out.</div>
+    <form method="post" th:action="@{/login}" class="form-grid single">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <label>Email
+            <input type="email" name="username" required>
+        </label>
+        <label>Password
+            <input type="password" name="password" required>
+        </label>
+        <button class="btn primary full" type="submit">Login</button>
+    </form>
+    <p class="auth-bottom">New patient? <a th:href="@{/register}">Create an account</a></p>
+</div>
+</body>
+</html>

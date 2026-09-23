@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Dashboard | MediCare</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<main class="container">
+<div class="page-header"><div><span class="eyebrow">Administration</span><h1>Dashboard</h1><p class="muted">Overview of your healthcare system.</p></div></div>
+<div class="stat-grid">
+<div class="stat-card"><span>Doctors</span><strong th:text="${doctorCount}">0</strong></div>
+<div class="stat-card"><span>Patients</span><strong th:text="${patientCount}">0</strong></div>
+<div class="stat-card"><span>Appointments</span><strong th:text="${appointmentCount}">0</strong></div>
+<div class="stat-card"><span>Pending</span><strong th:text="${pendingCount}">0</strong></div>
+<div class="stat-card"><span>Confirmed</span><strong th:text="${confirmedCount}">0</strong></div>
+<div class="stat-card"><span>Completed</span><strong th:text="${completedCount}">0</strong></div>
+<div class="stat-card"><span>Cancelled</span><strong th:text="${cancelledCount}">0</strong></div>
+</div>
+<div class="quick-grid">
+<a class="feature-card link-card" th:href="@{/doctors}"><span>01</span><h3>Manage Doctors</h3><p>Add, edit, view and delete doctor records.</p></a>
+<a class="feature-card link-card" th:href="@{/patients}"><span>02</span><h3>Manage Patients</h3><p>View and maintain patient profiles.</p></a>
+<a class="feature-card link-card" th:href="@{/appointments}"><span>03</span><h3>Manage Appointments</h3><p>Confirm, complete, cancel or edit visits.</p></a>
+</div>
+</main>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body></html>
